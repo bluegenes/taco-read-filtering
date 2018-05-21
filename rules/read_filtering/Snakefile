@@ -6,3 +6,55 @@ include: "fetch_reads.rule"
 include: "pre_post_assessment.rule"
 include: "quality_trimming.rule"
 include: "interleave.rule"
+
+[IN PROGRESS]
+
+# Grab values from config files
+
+# basename
+base = config['basename']
+
+# grab reads
+if config['reads']: # user inputs list of basename: read names
+    input_reads = config['reads']  #input should be read_base:(left,right) or sample_base:(single)
+elif config['read_pattern']: # user inputs a pattern for read names;
+    try:
+        read_dir = config['read_patterns'][read_dir] # allow for read dir input
+        pre_trimming_pattern = join(data_dir, config['read_patterns']['pre_trimming_pattern'])
+    except KeyError:
+        pre_trimming_pattern = ""
+        #err = "ERROR:\nNo pre-trimming pattern present in parameters.\n"
+        #err += "There is no way to determine which read files to download.\n"
+        #err += "Specify a configuration key in config['read_filtering']['read_patterns']['pre_trimming_pattern]."
+        #raise Exception(err)
+else:
+    #raise Exception
+    print('Please specify some reads or a read pattern for us to find files')
+
+# Use read names generate targets for fastqc, trimming rules
+# currently just generating a list of [sample,left, right]] or [base, single] 
+samples_se,samples_pe = [], []
+type = None #data type (SE or PE)  currently infer. Alt:#type = config['data_type']
+for sample_base,read_files in input_reads.items():
+    if len(read_files) == 2:
+        type = 'pe'
+        samples_pe.append([sample_base,read_files[0], read_files[1]])
+    elif len(read_files) == 1:
+        type = 'se'
+        samples_se.append([sample_base,read_files[0]])
+    else:
+        print('incorrect read file input')
+
+#trimming quality --> allow input of trimming quality, e.g. minimum length, phred score, etc
+qual = params['trim_qual'] #note: need to add this to the params yaml
+
+
+# build some folder names, variables etc
+
+# build targets for assembly & downstream rules
+rule generate_targets:
+    """
+    Use the basenames provided in the config file 
+    to generate required targets for each snake rule
+    """
+

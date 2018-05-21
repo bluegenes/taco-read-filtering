@@ -1,5 +1,7 @@
 description: "Read Filtering Walkthrough 1"
 
+data_type: "pe"
+
 data_dir: "data"
 
 reads: 
@@ -11,3 +13,7 @@ reads:
                              "files.osf.io/v1/resources/dm938/providers/osfstorage/59f104ed594d90026411f486"),
    - "SRR606249_subset50" : ("files.osf.io/v1/resources/dm938/providers/osfstorage/59f1082d6c613b026430e5cf",
                              "files.osf.io/v1/resources/dm938/providers/osfstorage/59f10ac6594d900262123e77")
+
+read_patterns:
+   pre_trimming_pattern: "{sample}_{direction}_reads.fq.gz"
+   post_trimming_pattern: "{sample}_{direction}_trim{qual}.fq.gz"
