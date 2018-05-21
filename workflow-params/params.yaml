@@ -1,0 +1,26 @@
+description: "Read Filtering Walkthrough 6: Interleaving Trimmed Reads: Parameters"
+
+read_filtering:
+
+  fastqc:
+
+    suffix: "_fastqc"
+
+    read_patterns:
+      pre_trimming_pattern: "{sample}_{direction}_reads.fq.gz"
+      post_trimming_pattern: "{sample}_{direction}_trim{qual}.fq.gz"
+
+    quality_assessment:
+      fastqc_suffix: "_fastqc"
+
+    quality_trimming:
+      Trimmomatic_command: 
+      trim_suffix: "se"
+
+    interleaving:
+      interleave_suffix: "pe"
+
+    adapter_file:
+      name" : "TruSeq2-PE.fa"
+      url"  : "http://dib-training.ucdavis.edu.s3.amazonaws.com/mRNAseq-semi-2015-03-04/TruSeq2-PE.fa"
+

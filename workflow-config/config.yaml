@@ -1,0 +1,13 @@
+description: "Read Filtering Walkthrough 1"
+
+data_dir: "data"
+
+reads: 
+   - "SRR606249" : ("files.osf.io/v1/resources/dm938/providers/osfstorage/59f0f9156c613b026430dbc7",\
+                    "files.osf.io/v1/resources/dm938/providers/osfstorage/59f0fc7fb83f69026076be47"),
+   - "SRR606249_subset10" : ("files.osf.io/v1/resources/dm938/providers/osfstorage/59f10134b83f69026377611b",\
+                             "files.osf.io/v1/resources/dm938/providers/osfstorage/59f101f26c613b026330e53a"),
+   - "SRR606249_subset25" : ("files.osf.io/v1/resources/dm938/providers/osfstorage/59f1039a594d900263120c38",
+                             "files.osf.io/v1/resources/dm938/providers/osfstorage/59f104ed594d90026411f486"),
+   - "SRR606249_subset50" : ("files.osf.io/v1/resources/dm938/providers/osfstorage/59f1082d6c613b026430e5cf",
+                             "files.osf.io/v1/resources/dm938/providers/osfstorage/59f10ac6594d900262123e77")

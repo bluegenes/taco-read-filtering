@@ -1,0 +1,14 @@
+description: "Read Filtering Walkthrough 6: Parameters"
+
+biocontainers:
+  trimmomatic:
+    quayurl: "quay.io/biocontainers/trimmomatic"
+    version: "0.36--5"
+    use_local: false
+  fastqc:
+    quayurl: "quay.io/biocontainers/khmer"
+    version: "2.1.2--py35_0"
+    use_local: false
+  khmer:
+    quayurl: "quay.io/biocontainers/khmer"
+    versino: "2.1.2--py35_0"
